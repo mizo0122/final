@@ -32,7 +32,7 @@ const PASS = 'Pass0122';
             <table>
                 <tr><th>曲名</th><th>アーティスト名</th></tr>
                 <?php
-                    foreach ($pdo->query('select MUSC.music_name,ARTIST.artist_name from MUSC ,ARTISR') as $row) {
+                    foreach ($pdo->query('select MUSC.music_name,ARTIST.artist_name,MUSC.music_id from MUSC ,ARTIST group by MUSC.music_id') as $row) {
                         echo '<tr>';
                         echo '<td>',$row['music_name'],'</td>';
                         echo '<td>',$row['artist_name'],'</td>';
