@@ -15,15 +15,20 @@ const PASS = 'Pass0122';
     <title>曲一覧</title>
 </head>
 <body>
+<hr><br>
+    <table>
+    <tr><th>ミュージックID</th><th>曲名</th><th>アーティストID</th></tr>
     <?php
-    $pdo->query('select*from MUSC')
-    foreach($pdo->query('select MUSC.music_name,ARTIST.artist_name,MUSC.music_id from MUSC ,ARTIST group by MUSC.music_id') as $row) as $row){
-        echo '<p>';
-        echo $row['music_id'],':';
-        echo $row['music_name'],':';
-        echo $row['artist_id'];
-        echo '</p>';
+    $pdo=new PDO('mysql:host=mysql220.phy.lolipop.lan;dbname=LAA1517346-final;charset=utf8',
+    'LAA1517346','Pass0122');
+    foreach($pdo->query('select*from MUSC') as $row){
+        echo '<tr>';
+        echo '<td>',$row['music_id'],'</td>';
+        echo '<td>',$row['music_name'],'</td>';
+        echo '<td>',$row['artist_id'],'</td>';
+        echo '</tr>';
     }
     ?>
+    </table>
 </body>
 </html>

@@ -12,33 +12,43 @@ const PASS = 'Pass0122';
 
 <head>
     <meta charset="UTF-8">
-    <title>削除画面</title>
+    <title>削除結果</title>
 </head>
 
 <body>
+    <?php
+    $pdo=new PDO($connect, USER, PASS);
+    $sql=$pdo->prepare('delete from MUSC where music_id=?');
+    if($sql->execute([$_GET['music_id']])){
+        echo '削除に成功しました。';
+
+    }else{
+        echo '削除に失敗しました。';
+    }
+
+?>
+    <br>
+    <hr><br>
     <table>
-    <tr>
+        <tr>
         <th>ミュージックid</th>
         <th>曲名</th>
         <th>アーティストID</th>
-    </tr>
+        </tr>
         <?php
-    $pdo=new PDO($connect, USER, PASS);
-    foreach($pdo->query('select * from MUSC')as $row){
+    foreach ($pdo->query('select * from MUSC') as $row) {
         echo '<tr>';
         echo '<td>', $row['music_id'], '</td>';
         echo '<td>', $row['music_name'], '</td>';
         echo '<td>', $row['artist_id'], '</td>';
-        echo '<td>';
-        echo '<a href="delete.php?id=',$row['music_id'],'">削除</a>';
-        echo '</td>';
         echo '</tr>';
         echo "\n";
     }
-
-
 ?>
     </table>
+    <form action="all.php" method="post">
+        <button type="submit">一覧画面へ戻る</button>
+    </form>
 </body>
 
 </html>
