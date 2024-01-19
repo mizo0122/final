@@ -30,5 +30,6 @@ const PASS = 'Pass0122';
     }
     ?>
     </table>
+    <button onclick="location.href='index.php'">ホーム画面へ戻る</button>
 </body>
 </html>

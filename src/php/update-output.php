@@ -43,7 +43,7 @@ const PASS = 'Pass0122';
         </tr>
 
         <?php
-foreach ($pdo->query('select * from product') as $row) {
+foreach ($pdo->query('select * from MUSC') as $row) {
     echo '<tr>';
     echo '<td>', $row['music_id'], '</td>';
     echo '<td>', $row['music_name'], '</td>';
